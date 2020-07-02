@@ -3,24 +3,24 @@
     {
       "fqdn" : scale-51,
       "ip_address" : 127.0.0.1,
-      "is_protocol_node" : true,
-      "is_nsd_server" : true,
-      "is_quorum_node" : true,
-      "is_manager_node" : true,
-      "is_gui_server" : true,
-      "is_callhome_node" : true,
-      "scale_zimon_collector" : true
+      "is_protocol_node" : false,
+      "is_nsd_server" : false,
+      "is_quorum_node" : false,
+      "is_manager_node" : false,
+      "is_gui_server" : false,
+      "is_callhome_node" : false,
+      "scale_zimon_collector" : false
     },
     {
       "fqdn" : scale-52,
       "ip_address" : 127.0.0.1,
-      "is_protocol_node" : true,
-      "is_nsd_server" : true,
-      "is_quorum_node" : true,
-      "is_manager_node" : true,
+      "is_protocol_node" : false,
+      "is_nsd_server" : false,
+      "is_quorum_node" : false,
+      "is_manager_node" : false,
       "is_gui_server" : false,
-      "is_callhome_node" : true,
-      "scale_zimon_collector" : true
+      "is_callhome_node" : false,
+      "scale_zimon_collector" : false
     }
   ],
   "scale_storage":[
@@ -43,8 +43,7 @@
     }
   ],
   "callhome":{
-      "is_enabled": true,
-      "is_enabled": true,
+      "is_enabled": false,
       "customer_name": abc,
       "customer_email": abc@abc.com,
       "customer_id": 12345,
@@ -59,10 +58,8 @@
       "callhome_schedule": [daily,weekly]
   },
   "protocols":{
-      "object": true,
-      "smb": true,
-      "nfs": true,
-      "hdfs": False,
+      "smb": false,
+      "nfs": false,
       "export_ip_pool": [192.168.1.100,192.168.1.101],
       "filesystem": cesSharedRoot,
       "mountpoint": /ibm/cesSharedRoot
