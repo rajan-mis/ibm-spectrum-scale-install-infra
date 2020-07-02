@@ -19,4 +19,6 @@
 - name: Configuring NFS performance monitoring sensors
   shell:
    cmd: "{{ directory }}mmperfmon config add --sensors=/opt/IBM/zimon/defaults/GaneshaProxy.conf"
-  when: config_file_status.stat.exists
+  when: 
+    - config_file_status.stat.exists
+    - " 'mmperfmon: There is no performance monitoring configuration data.' not in scale_zimon_conf_sensors.stderr"

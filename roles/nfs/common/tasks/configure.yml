@@ -94,7 +94,7 @@
   when: ces_disabled_nodes|length > 0 and 'NFS' in service_list
 
 - import_role: 
-   name: smb/install
+   name: smb/node
   when: ces_disabled_nodes|length > 0 and 'SMB' in service_list
 
 - name: Prepare ces nodes string
@@ -144,3 +144,9 @@
   command: "{{ directory }}mmces address move --rebalance"
   when: ansible_fqdn in protocol_nodes_list
   delegate_to: "{{ protocol_nodes_list.0 }}"
+
+- name: Check if zimon sensor is configured
+  shell: "/usr/lpp/mmfs/bin/mmperfmon config show"
+  register: scale_zimon_conf_sensors
+  failed_when: false
+  changed_when: false

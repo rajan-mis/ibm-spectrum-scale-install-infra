@@ -99,14 +99,3 @@
 - name: install | Set variables based on zypper based OS
   include: zypper/set_vars.yml
   when: ansible_distribution in scale_sles_distribution
-
-- name: Copy key
-  copy:
-   src: "{{ gpgKey_src }}"
-   dest: "{{ gpgKey_dest }}"
-  when: ansible_distribution in scale_sles_distribution or ansible_distribution in scale_rhel_distribution
-
-- rpm_key:
-   state: present
-   key: "{{ gpgKey_dest }}SpectrumScale_public_key.pgp"
-  when: ansible_distribution in scale_sles_distribution or ansible_distribution in scale_rhel_distribution

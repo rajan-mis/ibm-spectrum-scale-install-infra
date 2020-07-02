@@ -11,6 +11,8 @@
         msg: "{{ scale_callhome_config_status.cmd }}"
  
 - block:
+  - debug:
+      msg: "{{ scale_callhome_proxy_status }}"
 
   - name: configure | Setup the call home proxy configuration if enabled
     shell:

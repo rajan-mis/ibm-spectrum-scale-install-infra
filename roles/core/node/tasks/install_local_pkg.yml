@@ -99,6 +99,17 @@
     path: "{{ scale_install_localpkg_tmpdir_path + '/' + scale_install_localpkg_path | basename }}"
     state: absent
 
+- name: Copy key
+  copy:
+   src: "{{ gpgKey_src }}"
+   dest: "{{ gpgKey_dest }}"
+  when: ansible_distribution in scale_sles_distribution or ansible_distribution in scale_rhel_distribution
+
+- rpm_key:
+   state: present
+   key: "{{ gpgKey_dest }}SpectrumScale_public_key.pgp"
+  when: ansible_distribution in scale_sles_distribution or ansible_distribution in scale_rhel_distribution
+
 #
 # Find GPFS BASE
 #

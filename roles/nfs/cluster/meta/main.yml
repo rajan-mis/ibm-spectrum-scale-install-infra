@@ -18,5 +18,7 @@ galaxy_info:
     - scale
     - gpfs
 
-dependencies: []
+dependencies:
+  - precheck
+  - common
 
