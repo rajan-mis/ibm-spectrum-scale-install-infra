@@ -36,6 +36,9 @@
      scale_cluster_profile_dir_path: "{{ scale_cluster.scale_cluster_profile_dir_path | default(omit) }}"
      scale_service_gui_start: "{{ scale_cluster.scale_service_gui_start | default(true) }}"
      scale_sync_replication_config: "{{ scale_cluster.scale_sync_replication_config | default(false) }}"
+     is_protocol_node: "{{ item.is_protocol_node | default(false) }}"
+     callhome_params: "{{ callhome | default(omit) }}"
+     protocols: "{{ protocols | default(omit) }}"
     loop: "{{ node_details }}"
   tags:
   - scale_inventory
