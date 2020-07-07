@@ -19,6 +19,7 @@
      - zimon/node
      - zimon/cluster
      - zimon/postcheck
+     - callhome/precheck
      - callhome/node
      - callhome/cluster
      - nfs/node
