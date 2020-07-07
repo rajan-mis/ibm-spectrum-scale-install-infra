@@ -19,6 +19,6 @@ galaxy_info:
     - gpfs
 
 dependencies:
-  - precheck
-  - common
+  - nfs/precheck
+  - nfs/common
 

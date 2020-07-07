@@ -97,15 +97,15 @@ Please define the CES shared root file system mount point using
    fail_msg: "Duplicate ips found in export ip pool"
   run_once: true
 
-- name: Check no protocol ips are also node ips
-  assert:
-   that:
-   - hostvars[item]['ansible_default_ipv4']['address'] not in protocols.export_ip_pool
-   fail_msg: "A node IP cannot also be a protocol IP.following IP addresses are not both
-a node and protocol IP before continuing: {{ hostvars[item]['ansible_default_ipv4']['address'] }}"
-  with_items:
-  - "{{ ansible_play_hosts }}"
-  delegate_to: localhost
+#- name: Check no protocol ips are also node ips
+  #assert:
+   #that:
+   #- hostvars[item]['ansible_default_ipv4']['address'] not in protocols.export_ip_pool
+   #fail_msg: "A node IP cannot also be a protocol IP.following IP addresses are not both
+#a node and protocol IP before continuing: {{ hostvars[item]['ansible_default_ipv4']['address'] }}"
+  #with_items:
+  #- "{{ ansible_play_hosts }}"
+  #delegate_to: localhost
 
 - name: Get list of GPFS nodes which are not reporting active state
   shell:
