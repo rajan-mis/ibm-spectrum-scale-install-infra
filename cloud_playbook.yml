@@ -3,6 +3,9 @@
 # inventory variable form vars/scale_clusterdefinition.json.
 - import_playbook: "set_json_variables.yml"
 
+# ssh connectivity check
+- import_playbook: "inventory_ssh_check.yml"
+
 - hosts: scale_node
   any_errors_fatal: true
   vars:

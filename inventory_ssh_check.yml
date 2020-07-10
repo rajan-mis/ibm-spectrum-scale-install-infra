@@ -1,0 +1,16 @@
+---
+#- name: ssh ping check
+- gather_facts: false
+  name: check ssh connectivity
+  hosts: all
+  any_errors_fatal: true
+  connection: local # run ssh from controller node
+  tasks:
+  - name: check ssh on all scale inventory hosts
+    wait_for:
+      host: "{{ inventory_hostname }}"
+      connect_timeout: 10 # max number of seconds to wait for a conn to happen before closing and retrying
+      state: started
+      timeout: 60 # max number of seconds to wait for
+      port: 22
+    register: ssh_result
