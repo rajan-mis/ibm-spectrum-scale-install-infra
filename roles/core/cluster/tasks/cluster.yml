@@ -160,6 +160,21 @@
       template:
         src: ChangeFile.j2
         dest: /var/tmp/ChangeFile
+
+    - name: Setting ephemeral ports for GPFS daemon communication
+      command: "{{ scale_command_path }}mmlsconfig tscCmdPortRange"
+      register: scale_portrange
+      run_once: true
+
+    - name: Setting ephemeral ports for GPFS daemon communication
+      vars:
+        ephemeral_ports: "{{ scale_cluster_config.scale_ephemeral_ports }}"
+      command: "{{ scale_command_path }}mmchconfig tscCmdPortRange={{ ephemeral_ports }}"
+      when:
+        - "'undefined' in scale_portrange.stdout"
+        - scale_cluster_config is defined and scale_cluster_config.scale_ephemeral_ports  is defined
+      run_once: true
+
   when:
     - groups['scale_cluster_candidates'] is defined
     - groups['scale_cluster_members'] is undefined
