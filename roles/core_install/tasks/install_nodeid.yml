@@ -8,7 +8,7 @@
       file:
         path: "{{ hostvars[inventory_hostname].cert_dir_location }}"
         state: directory
-        mode: '0600'
+        mode: '0700'
         recurse: yes
       when: hostvars[inventory_hostname].cert_dir_location is defined
 
@@ -16,19 +16,19 @@
       copy:
         src: "{{ hostvars[inventory_hostname].node_cert }}"
         dest: "{{ hostvars[inventory_hostname].node_cert }}"
-        mode: '0600'
+        mode: '0700'
 
     - name: install | Copy installation package to node
       copy:
         src: "{{ hostvars[inventory_hostname].node_cert_key }}"
         dest: "{{ hostvars[inventory_hostname].node_cert_key }}"
-        mode: '0600'
+        mode: '0700'
 
     - name: install | Copy installation package to node
       copy:
         src: "{{ hostvars[inventory_hostname].node_cert_chain }}"
         dest: "{{ hostvars[inventory_hostname].node_cert_chain }}"
-        mode: '0600'
+        mode: '0700'
 
     - name: cluster | Node identity
       command: /usr/lpp/mmfs/bin/scalectl node config get
